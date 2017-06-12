@@ -1,0 +1,54 @@
+#' Dendrograms for evolutionary analysis.
+#'
+#' The phylogram package contains functions for importing and exporting
+#' dendrogram objects in the Newick parenthetic text format, as well as
+#' several functions for command-line tree manipulation.
+#' With an emphasis on speed and computational efficiency, the package
+#' also includes a suite of tools for rapidly computing distance matrices
+#' and building large trees using fast alignment-free k-mer counting
+#' and divisive clustering techniques.
+#'
+#' @section Functions:
+#' A breif description of the primary \pkg{phylogram} functions are
+#'   provided with links to their help pages below.
+#'
+#' @section File import/export:
+#' \itemize{
+#' \item \code{\link{read.dendrogram}} is a text parser that converts
+#'   parenthetic text (Newick strings) into objects of class
+#'   \code{"dendrogram"}
+#' \item \code{\link{write.dendrogram}} outputs an object of class
+#'   \code{"dendrogram"} to a text string or file in Newick/New Hampshire
+#'   format
+#' }
+#'
+#' @section Tree building:
+#' \itemize{
+#' \item \code{\link{kcount}} tabulates all of the
+#'   k-letter words in a sequence or set of sequence
+#' \item \code{\link{kdistance}} calculates pairwise
+#'   distances between sequences by k-mer counting
+#' \item \code{\link{mbed}} embeds sequences as vectors of distances to a set of
+#'   'seed' sequences
+#' \item \code{\link{topdown}} builds a phylogenetic tree by successively
+#'   splitting a set of sequences (recursive partitioning)
+#' }
+#'
+#' @section Tree editing and manipulation:
+#' \itemize{
+#' \item \code{\link{prune}} remove branches from a \code{dendrogram} object
+#'   based on regular expression pattern matching
+#' \item \code{\link{ladder}} reorders the branches of a \code{dendrogram}
+#'   object to aid visualization
+#' \item \code{\link{remidpoint}} recursively sets "midpoint" and "members"
+#'   attributes for a nested list/\code{dendrogram} object
+#' \item \code{\link{reposition}} shifts a \code{dendrogram} object up or
+#'   down (or sideways if plotted horizontally)
+#' \item \code{\link{ultrametricize}} modifies the "height" attributes of the
+#'   nodes such that all leaves terminate at zero
+#' }
+#'
+#' @docType package
+#' @name phylogram
+################################################################################
+NULL
