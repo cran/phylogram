@@ -1,4 +1,4 @@
-65f109323be6427ee42db1c86116899f *DESCRIPTION
+4e6976be8ef1dd1f3422ab9ae6514118 *DESCRIPTION
 9edf254c44e1a3892caa71ca5422511b *NAMESPACE
 27379bf19b17addbb56cdfb55a261fc7 *R/RcppExports.R
 2e4650326156ca86c02b497ff9e6f893 *R/distance.R
@@ -32,7 +32,7 @@ fd264503f3e6096826be00cd5ef682fa *man/phylogram.Rd
 b9e7030effd6de51a88aa8344fab14c0 *man/write.dendrogram.Rd
 52561ed26ae347a8e6fe51082d35e738 *src/Makevars
 a9c8e0a271eecf71b0cb8f88a3ce254c *src/RcppExports.cpp
-2ab1a1a409ade92b23bb1d7213b6b72d *src/distance.cpp
+8e097df21acf3bfbcff9f388c516c150 *src/distance.cpp
 886e3c2863ea07c8f77928a4c9c32052 *src/init.cpp
 e31e0ae84a382749fa83c4fd7c982951 *tests/testthat.R
 0c41625298c8a2e9d80ab09714e86df4 *tests/testthat/test_IMO.R
