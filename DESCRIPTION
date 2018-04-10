@@ -1,30 +1,25 @@
 Package: phylogram
 Type: Package
 Title: Dendrograms for Evolutionary Analysis
-Version: 1.0.1
+Version: 2.0.0
 Authors@R: person("Shaun", "Wilkinson", role = c("aut", "cre"),
                      email = "shaunpwilkinson@gmail.com")
 Author: Shaun Wilkinson [aut, cre]
 Maintainer: Shaun Wilkinson <shaunpwilkinson@gmail.com>
 Description: Contains functions for importing and exporting 'dendrogram' 
-    objects in parenthetic text format, and several 
-    functions for command-line tree manipulation. 
-    With an emphasis on speed and computational efficiency, 
-    the package also includes a suite of tools for rapidly computing 
-    distance matrices and building large trees using fast alignment-free 
-    'k-mer' counting and divisive clustering techniques.
+    objects in parenthetic text format, as well as several 
+    functions for command-line tree manipulation.
 License: GPL-3
 LazyData: TRUE
 URL: http://github.com/shaunpwilkinson/phylogram
 BugReports: http://github.com/shaunpwilkinson/phylogram/issues
 Encoding: UTF-8
 Depends: R (>= 3.0.0)
-Imports: openssl, Rcpp (>= 0.12.8), stats,
-Suggests: ape (>= 3.0), knitr, rmarkdown, testthat
-LinkingTo: Rcpp
+Imports: ape (>= 4.0), stats
+Suggests: knitr, rmarkdown, testthat
 RoxygenNote: 6.0.1
 VignetteBuilder: knitr
-NeedsCompilation: yes
-Packaged: 2017-06-14 23:37:19 UTC; shaun
+NeedsCompilation: no
+Packaged: 2018-04-10 05:50:35 UTC; shaun
 Repository: CRAN
-Date/Publication: 2017-06-14 23:58:19 UTC
+Date/Publication: 2018-04-10 06:03:02 UTC
