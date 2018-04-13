@@ -12,7 +12,7 @@
 
 <meta name="author" content="Shaun Wilkinson" />
 
-<meta name="date" content="2018-04-10" />
+<meta name="date" content="2018-04-13" />
 
 <title>phylogram: dendrograms for evolutionary analysis</title>
 
@@ -70,7 +70,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 
 <h1 class="title toc-ignore">phylogram: dendrograms for evolutionary analysis</h1>
 <h4 class="author"><em>Shaun Wilkinson</em></h4>
-<h4 class="date"><em>2018-04-10</em></h4>
+<h4 class="date"><em>2018-04-13</em></h4>
 
 
 
@@ -145,11 +145,6 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <h4>Example 2: Import and export a tree from a Newick string</h4>
 <p>The simple Newick string in Example 1 can be imported as a dendrogram object using the <code>read.dendrogram</code> function as follows:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(phylogram)
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Attaching package: 'phylogram'</span>
-<span class="co">#&gt; The following object is masked from 'package:stats':</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt;     as.dendrogram</span>
 newick &lt;-<span class="st"> &quot;(A,(B,C));&quot;</span>
 x &lt;-<span class="st"> </span><span class="kw">read.dendrogram</span>(<span class="dt">text =</span> newick)
 x
