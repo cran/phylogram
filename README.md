@@ -1,13 +1,16 @@
 # phylogram
 
+
 --------------------------------------------------------------------------------
 
-**phylogram** is an R package for working with evolutionary trees 
-as deeply-nested lists known as "dendrogram" objects. 
-It provides functions for importing and exporting trees in the Newick 
-parenthetic text format, as well as several functions for command-line 
-tree manipulation, making R's versatile dendrogram objects more 
-accessible to evolutionary biologists.
+The **phylogram** R package is a tool for for developing 
+phylogenetic trees as deeply-nested lists known as "dendrogram" objects. 
+It provides functions for conversion between "dendrogram" and 
+"phylo" class objects, as well as several tools for command-line tree 
+manipulation and import/export via Newick parenthetic text.
+This improves accessibility to the comprehensive range of object-specific 
+analytical and tree-visualization functions found across a wide array of 
+bioinformatic R packages.
 
 
 ### Installation
@@ -22,7 +25,7 @@ library("phylogram")
 To download the latest development version from GitHub, run:
 
 ```R
-devtools::install_github("shaunpwilkinson/phylogram", build_vignettes = TRUE) 
+devtools::install_github("ropensci/phylogram", build_vignettes = TRUE) 
 library("phylogram")
 ```
 
@@ -75,7 +78,7 @@ An overview of the package with links to the function documentation can be found
 ```
 
 If you experience a problem using this package please
-either raise it as an issue on [GitHub](http://github.com/shaunpwilkinson/phylogram/issues) 
+either raise it as an issue on [GitHub](http://github.com/ropensci/phylogram/issues) 
 or post it on the **phylogram** [google group](https://groups.google.com/group/phylogram).
 
 
@@ -85,3 +88,6 @@ This software was developed at
 [Victoria University of Wellington](http://www.victoria.ac.nz/) 
 with funding from a Rutherford Foundation Postdoctoral Research Fellowship 
 award from the Royal Society of New Zealand.
+
+
+

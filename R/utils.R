@@ -2,8 +2,8 @@
 #'
 #' \code{remidpoint} is a helper function used for manually creating
 #'   \code{"dendrogram"} objects from nested lists. The function
-#'   recursively assigns the necessary 'midpoint' and 'members'
-#'   attributes at each node.
+#'   recursively assigns the necessary 'midpoint', 'members', and
+#'   'leaf' attributes at each node.
 #'
 #' @param x a nested list, possibly of class \code{"dendrogram"}
 #' @return returns a nested list, or an object of class \code{"dendrogram"}
@@ -31,9 +31,8 @@ remidpoint <- function(x){
   isdendro <- inherits(x, "dendrogram")
   setnodeattr <- function(node){
     if(is.list(node)){
-      cladesizes <- sapply(node, function(subnode){
-        length(unlist(subnode, use.names = FALSE))
-      })
+      get_cladesizes <- function(z) length(unlist(z, use.names = FALSE))
+      cladesizes <- vapply(node, get_cladesizes, 0)
       nclades <- length(cladesizes)
       attr(node, "members") <- sum(cladesizes)
       attr(node, "midpoint") <- ((cladesizes[1] - 1)/2 +
@@ -90,22 +89,26 @@ reposition <- function(x, shift = "reset"){
   return(x)
 }
 ################################################################################
-#' Make dendrogram ultrametric.
+#' Apply unweighted branch lengths.
 #'
-#' This is a simple function that sets the 'height' attributes of
-#'   all leaf nodes to zero to aid vizualization.
+#' This function sets the 'height' attributes of all leaf nodes to zero and
+#'   progressively resets the heights of the inner nodes by single incremental
+#'   units in a bottom-up fashion.
 #'
 #' @param x an object of class \code{"dendrogram"}.
-#' @return Returns an object of class \code{"dendrogram"}.
+#' @return an object of class \code{"dendrogram"}.
 #' @author Shaun Wilkinson
 #' @examples
 #'   x <- read.dendrogram(text = "(A:0.1,B:0.2,(C:0.3,D:0.4):0.5);")
 #'   plot(x, horiz = TRUE)
-#'   x <- ultrametricize(x)
+#'   x <- as.cladogram(x)
 #'   plot(x, horiz = TRUE)
 ################################################################################
-ultrametricize <- function(x){
-  if(!(inherits(x, "dendrogram"))) stop("x must be a 'dendrogram' object")
+as.cladogram <- function(x){
+  if(!(inherits(x, "dendrogram"))){
+    x <- remidpoint(x)
+    class(x) <- "dendrogram"
+  } # stop("x must be a 'dendrogram' object")
   placeflags <- function(node){
     if(is.leaf(node)){
       attr(node, "height") <- 0
@@ -116,10 +119,11 @@ ultrametricize <- function(x){
   x <- dendrapply(x, placeflags)
   checkflags <- function(node){
     if(is.list(node)){
-      if(all(sapply(node, function(e) !is.null(attr(e, "flag"))))){
-        return(TRUE)
-      }else return(FALSE)
-    }else return(FALSE)
+      has_flag <- function(e) !is.null(attr(e, "flag"))
+      return(all(vapply(node, has_flag, logical(1))))
+    }else{
+      return(FALSE)
+    }
   }
   removeflags <- function(node){
     if(is.list(node)){
@@ -129,10 +133,10 @@ ultrametricize <- function(x){
     }
     return(node)
   }
-  ultrametricize1 <- function(node){
+  ac1 <- function(node){
     if(is.list(node)){
       if(checkflags(node)){
-        childheights <- sapply(node, function(e) attr(e, "height"))
+        childheights <- vapply(node, attr, 0, "height")
         attr(node, "height") <- max(childheights) + 1
         node <- removeflags(node)
         attr(node, "flag") <- TRUE
@@ -140,7 +144,7 @@ ultrametricize <- function(x){
     }
     return(node)
   }
-  while(is.null(attr(x, "flag"))) x <- dendrapply(x, ultrametricize1)
+  while(is.null(attr(x, "flag"))) x <- dendrapply(x, ac1)
   removeallflags <- function(node){
     attr(node, "flag") <- NULL
     return(node)
